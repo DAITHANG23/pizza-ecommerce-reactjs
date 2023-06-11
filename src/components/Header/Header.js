@@ -16,40 +16,40 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
   appetizerDishes,
   pastaDishes,
   saladDishes,
-  drinkDishes}) => {
+  drinkDishes }) => {
 
 
-    // Function search
+  // Function search
 
-    const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const handleSearchChange = (event) => {
-      setSearchTerm(event.target.value);
-    };
-    
-    const dishCategories = {
-      comboDishes,
-      pizzaDishes,
-      chickenDishes,
-      appetizerDishes,
-      pastaDishes,
-      saladDishes,
-      drinkDishes
-    };
-    
-    const filteredDishes = searchTerm
-      ? Object.keys(dishCategories).reduce((result, category) => {
-          const dishes = dishCategories[category].filter((dish) => {
-            return dish.title.toLowerCase().includes(searchTerm.toLowerCase());
-          });
-          
-          if (dishes.length > 0) {
-            result[category] = dishes;
-          }
-          
-          return result;
-        }, {})
-      : {};
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const dishCategories = {
+    comboDishes,
+    pizzaDishes,
+    chickenDishes,
+    appetizerDishes,
+    pastaDishes,
+    saladDishes,
+    drinkDishes
+  };
+
+  const filteredDishes = searchTerm
+    ? Object.keys(dishCategories).reduce((result, category) => {
+      const dishes = dishCategories[category].filter((dish) => {
+        return dish.title.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+
+      if (dishes.length > 0) {
+        result[category] = dishes;
+      }
+
+      return result;
+    }, {})
+    : {};
 
 
 
@@ -71,7 +71,7 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
   };
 
 
-  
+
   const cartContainer = cart.map((cartItem) => {
     const { title, image, price, id, quantity } = cartItem;
 
@@ -83,7 +83,7 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
           <div className="cart-name">{title}</div>
           <button className="close" onClick={() => onDeleteProduct(id)}><FaTrashAlt className='trash' /></button>
         </div>
-        <div className='d-flex justify-content-between align-items-center '>
+        <div className='d-flex justify-content-between align-items-center cart-quantity-container '>
           <div className="quantity-item">
             <button
               style={{ background: "#0b603d", padding: "5px 10px", marginRight: "5px" }}
@@ -102,7 +102,7 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
               +
             </button>
           </div>
-          <div className="price-item">{price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</div>
+          <div className="price-item">{price.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</div>
         </div>
       </div>
     </div>
@@ -135,36 +135,36 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
           </Link> */}
         </div>
 
-          <div className='search-and-cart'>
+        <div className='search-and-cart'>
           {/* Search */}
           <div className="search-container">
-        <input
-          type="text"
-          placeholder="Tìm kiếm..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-input"
-          
-        />
-         <div className="search-icon">
+            <input
+              type="text"
+              placeholder="Tìm kiếm..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              className="search-input"
+
+            />
+            <div className="search-icon">
               <FaSearch />
-         </div>
-        
-      </div>
+            </div>
+
+          </div>
 
 
-            {Object.keys(filteredDishes).map((category) => (
-              <div key={category} className="search-results">
-                {filteredDishes[category].map((dish) => (
-                  <SearchResultLink to={`/dish-details/${dish.id}`} key={dish.id}  className="search-result-item">
-                    {dish.title}
-                  </SearchResultLink>
-                ))}
-              </div>
-            ))}
-      
-      
-      <button className='btn rounded-pill cart-btn d-flex align-items-center gap-1' data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          {Object.keys(filteredDishes).map((category) => (
+            <div key={category} className="search-results">
+              {filteredDishes[category].map((dish) => (
+                <SearchResultLink to={`/dish-details/${dish.id}`} key={dish.id} className="search-result-item">
+                  {dish.title}
+                </SearchResultLink>
+              ))}
+            </div>
+          ))}
+
+
+          <button className='btn rounded-pill cart-btn d-flex align-items-center gap-1' data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <i className="fa fa-shopping-cart mr-2"></i>
             Giỏ hàng
             <span className='cart-quantity'>{lengthCart}</span>
@@ -187,9 +187,8 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
                 : (<p className='content-cart'>Chưa có sản phẩm trong giỏ hàng!</p>)
             }
 
-
           </div>
-          </div>
+        </div>
 
 
       </nav>

@@ -9,7 +9,7 @@ const PopularDish = ({ onAddToCart, appetizerDishes, pizzaDishes, pastaDishes, s
   /*Navbar*/
   const PopularDishNavBar = () => {
     return (
-      <div className="row">
+      <div >
 
         <ul className="nav nav-tabs menu_tab row" id="myTab" role="tablist">
           <li className="nav-item col-3">

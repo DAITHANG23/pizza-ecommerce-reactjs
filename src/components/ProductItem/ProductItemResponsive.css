@@ -1,0 +1,5 @@
+@media only screen and (min-width: 1px) and (max-width: 639px){
+    .cart-item-buy-btn{
+        width: 100px;
+    }
+}
