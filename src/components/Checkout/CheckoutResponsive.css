@@ -87,7 +87,7 @@
         font-size: 16px !important;
      }
      .input-voucher{
-        width: 150px;
+        width: 120px;
      }
 }
 @media (max-width: 450px){
@@ -140,5 +140,9 @@
      }
      .discount-amount{
         font-size: 15px !important;
+     }
+
+     .input-voucher{
+        width: 120px !important;
      }
 }
