@@ -51,20 +51,22 @@ const Cart = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity })
   const cartBodyElements = cart.map((cartItem, index) => {
     const { title, image, price, id, quantity } = cartItem;
     return (
-      <tr key={id}>
-        <th style={{ paddingTop: "20px" }} scope="row">{index + 1}</th>
-        <td >
+      <div key={id} className='carts-container'>
+        <div style={{ paddingTop: "20px" }} scope="row">{index + 1}.</div>
+        
+        <div className='image-container'>
           <img src={image} alt={title} style={{
-            width: "50%", height: "50px"
+            width: "100%", height: "auto", marginTop:"8px"
           }} />
-        </td>
-        <td style={{ paddingTop: "20px" }}>{title}</td>
+        </div>
 
-        <td style={{ paddingTop: "20px" }}>{price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
-        <td>
+        <div className='content-item'>
+        <h4 style={{ paddingTop: "20px"}}>{title}</h4>
+        <div style={{ paddingTop: "20px" }}>{price.toLocaleString('vi', {style : 'currency', currency : 'VND'})}</div>
+        <div style={{marginTop:"10px"}}>
           <button
             style={{ background: "#0b603d" }}
-            className="btn btn-primary"
+            className="btn btn-primary btn-cart-items"
             onClick={() => onDecreaseQuantity(id)}
           // disabled={isDisabledDecreaseButton}
           >
@@ -73,23 +75,25 @@ const Cart = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity })
           <span className="mx-2">{quantity}</span>
           <button
             style={{ background: "#0b603d" }}
-            className="btn btn-primary"
+            className="btn btn-primary btn-cart-items"
             onClick={() => onIncreaseQuantity(id)}
           >
             +
           </button>
-        </td>
-        <td style={{ paddingTop: "20px" }}>{(quantity * price).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</td>
-        <td>
+        </div>
+        <div style={{ paddingTop: "20px" }}>{(quantity * price).toLocaleString('vi', {style : 'currency', currency : 'VND'})}</div>
+        <div className='rash-btn'> 
           <button
-            style={{ background: "none", color: "#00814b", border: "none" }}
+            style={{ background: "none", color: "#00814b", border: "none", marginTop:"8px" }}
             className="btn btn-danger"
             onClick={() => onDeleteProduct(id)}
           >
             <FaTrashAlt />
           </button>
-        </td>
-      </tr>
+        </div>
+        </div>
+        
+      </div>
     )
 
   })
@@ -101,31 +105,17 @@ const Cart = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity })
             <span>Giỏ hàng của bạn</span>
           </h3>
           <div>
-            <table className="table table-cart my-5 text-center">
-              <thead>
-                <tr>
-                  <th scope="col" style={{ width: "130px" }}>#</th>
-
-                  <th scope="col"></th>
-                  <th scope="col">Sản phẩm</th>
-                  <th scope="col">Giá tiền</th>
-                  <th scope="col">Số lượng</th>
-                  <th scope="col">Tổng tiền</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
+           
+              <div>
                 {cartBodyElements}
-                <tr style={{ backgroundColor: 'var(--background-color-1' }} >
-                  <td style={{ fontWeight: "600", fontSize: "1.1rem" }} colspan="2">Tổng đơn hàng:</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td style={{ fontWeight: "600", fontSize: "1.1rem" }} >{totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})} </td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+                <div className='total-prices' style={{ backgroundColor: 'var(--background-color-1' }} >
+                  <div style={{ fontWeight: "600", fontSize: "1.1rem" }} colspan="2">Tổng đơn hàng:</div>
+                  
+                  <div style={{ fontWeight: "600", fontSize: "1.1rem" }} >{totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'})} </div>
+                  
+                </div>
+              </div>
+            
           </div>
           <div className='w-100 d-flex justify-content-center'>
             <button className="Proceed-to-checkout rounded-pill" onClick={onConditionalLogin}>

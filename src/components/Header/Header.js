@@ -87,7 +87,7 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
           <div className="quantity-item">
             <button
               style={{ background: "#0b603d", padding: "5px 10px", marginRight: "5px" }}
-              className="btn btn-primary btn-sm"
+              className="btn btn-primary btn-sm btn-cart-items"
               onClick={() => onDecreaseQuantity(id)}
             // disabled={isDisabledDecreaseButton}
             >
@@ -96,7 +96,7 @@ const Header = ({ cart, onDeleteProduct, onDecreaseQuantity, onIncreaseQuantity,
             <span style={{ fontSize: "1.3rem" }}> {quantity}</span>
             <button
               style={{ background: "#0b603d", padding: "5px 10px", marginLeft: "10px" }}
-              className="btn btn-primary btn-sm"
+              className="btn btn-primary btn-sm btn-cart-items"
               onClick={() => onIncreaseQuantity(id)}
             >
               +
